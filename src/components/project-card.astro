@@ -4,34 +4,59 @@ const { project } = Astro.props;
 import { Image } from 'astro:assets';
 import { resolveAssetImage } from '../utils/images';
 
-// Map through the array of image strings from project JSON
+const hasVideo = !!project.video;
+
+// Separate public paths (starting with /) from src/assets paths
+const publicImages: string[] = project.images.filter((img: string) => img.startsWith('/'));
+
 const optimizedImages = await Promise.all(
-  project.images.map(async (imgName: string) => {
-    return await resolveAssetImage(imgName);
-  })
+  project.images
+    .filter((img: string) => !img.startsWith('/'))
+    .map(async (imgName: string) => {
+      return await resolveAssetImage(imgName);
+    })
 );
 
-const validImages = optimizedImages.filter(Boolean);
+const validOptimizedImages = optimizedImages.filter(Boolean);
+const hasAnyImage = publicImages.length > 0 || validOptimizedImages.length > 0;
 
-const isSlider = validImages.length > 1;
+const validImages = validOptimizedImages;
+const isSlider = (validImages.length + publicImages.length) > 1;
 ---
 
 <div class="project-card group relative bg-accent/5 border border-accent/10 rounded-2xl overflow-hidden hover:border-accent/40 transition-all duration-500">
   <div class="aspect-video overflow-hidden relative bg-background/50">
     <div class="absolute inset-0 bg-accent/10 group-hover:bg-transparent transition-colors z-10 pointer-events-none"></div>
     
-    <div class={`w-full h-full relative ${isSlider ? 'image-slider' : ''}`}>
+    <div class={`w-full h-full relative ${isSlider && !hasVideo ? 'image-slider' : ''}`}>
       {
-        validImages.length > 0 ? (
-          validImages.map((imgMetadata, index) => (
-            <Image
-              src={imgMetadata}
-              alt={`${project.title}`}
-              class={`absolute inset-0 w-full h-full object-cover transition-all duration-1000 group-hover:scale-110 ${index === 0 ? "opacity-100 z-0" : "opacity-0 z-[-1]"}`}
-            />
-          ))
+        hasVideo ? (
+          <video
+            src={project.video}
+            autoplay
+            muted
+            loop
+            playsinline
+            class="absolute inset-0 w-full h-full object-cover"
+          />
+        ) : hasAnyImage ? (
+          <>
+            {validImages.map((imgMetadata, index) => (
+              <Image
+                src={imgMetadata}
+                alt={`${project.title}`}
+                class={`absolute inset-0 w-full h-full object-cover transition-all duration-1000 group-hover:scale-110 ${index === 0 && publicImages.length === 0 ? "opacity-100 z-0" : "opacity-0 z-[-1]"}`}
+              />
+            ))}
+            {publicImages.map((src, index) => (
+              <img
+                src={src}
+                alt={`${project.title}`}
+                class={`absolute inset-0 w-full h-full object-cover transition-all duration-1000 group-hover:scale-110 ${index === 0 && validImages.length === 0 ? "opacity-100 z-0" : "opacity-0 z-[-1]"}`}
+              />
+            ))}
+          </>
         ) : (
-          /* Fallback box if array is empty or filenames are missing */
           <img
             src="/placeholder.jpeg"
             alt={`${project.title} placeholder`}

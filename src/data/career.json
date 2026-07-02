@@ -1,26 +1,18 @@
 [
   {
-    "company": "Demo Company",
-    "role": "Lead Software Engineer",
-    "period": "Oct 2025 - Present",
+    "company": "Dental Blue Clinic",
+    "role": "Frontend Developer",
+    "period": "May 2026 - Present",
     "type": "Full time job",
-    "description": "Leading cross-platform mobile development using Flutter and FastAPI. Focused on scalable system design and high-performance data processing.",
-    "skills": ["Leading", "Collaboration"]
+    "description": "I'm currently building DentalBlue Agenda, a web application designed to streamline dental appointment management with a modern, intuitive, and responsive user experience. Stack: JavaScript / TypeScript, React, Supabase.",
+    "skills": ["React", "Tailwind", "Supabase", "Vite"]
   },
   {
-    "company": "Demo Company",
-    "role": "Full-stack Developer",
-    "period": "Sep 2023 - Sep 2025",
+    "company": "Dental Blue Clinic",
+    "role": "Frontend Developer",
+    "period": "Feb 2025 - Present",
     "type": "Full time job",
-    "description": "Specializing in Business Research Methods and Strategic HRM. Applying analytical frameworks to human capital management.",
-    "skills": ["React", "Node.js", "PostgreSQL", "Docker"]
-  },
-  {
-    "company": "Demo University of Tech",
-    "role": "BSc in Computer Science",
-    "period": "Jun 2020 - Jun 2024",
-    "type": "Student",
-    "description": "Specializing in Business Research Methods and Strategic HRM. Applying analytical frameworks to human capital management.",
-    "skills": ["C++", "OOP", "Problem Solving"]
+    "description": "Developed a fully responsive landing page from design to code, focusing on layout systems and UI consistency. Stack: HTML, CSS, JavaScript.",
+    "skills": ["Javascript", "Tailwind", "Vite", "Sanity"]
   }
 ]
