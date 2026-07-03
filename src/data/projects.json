@@ -27,5 +27,38 @@
     "platforms": ["web"],
     "link": "https://browser-extensions-manager-ui-ochre.vercel.app/",
     "category": "Published"
+  },
+  {
+    "title": "Rick and Morty App",
+    "description": "Interactive web application that displays characters from the Rick and Morty API with real-time search, status filtering, and dynamic character detail views. Built with Web Components and client-side routing.",
+    "images": ["/projects/RickAndMortyApp.png"],
+    "tech": [
+      "Javascript",
+      "Tailwind",
+      "REST API",
+      "Web Components",
+      "LocalStorage"
+    ],
+    "platforms": ["web"],
+    "link": "https://api-rick-and-morty-cyan.vercel.app/",
+    "category": "Published"
+  },
+  {
+    "title": "Credit Card App",
+    "description": "Interactive credit card form application that provides real-time visual feedback as users input their card details. Features form validation and dynamic rendering of card information.",
+    "images": ["/projects/CreditCardApp.png"],
+    "tech": ["Javascript", "Tailwind", "Vite"],
+    "platforms": ["web"],
+    "link": "https://vite-project-cdn-interactive-card-d.vercel.app/",
+    "category": "Published"
+  },
+  {
+    "title": "Conference Ticket Generator",
+    "description": "Web application that generates conference tickets based on user input, including name, event details, and ticket type. Features form validation and dynamic ticket rendering.",
+    "images": ["/projects/ConferenceTicketGenerator.png"],
+    "tech": ["Javascript", "Tailwind", "Vite"],
+    "platforms": ["web"],
+    "link": "https://conference-ticket-generator-main-eta.vercel.app/",
+    "category": "Published"
   }
 ]
