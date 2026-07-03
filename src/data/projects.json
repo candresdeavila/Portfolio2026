@@ -2,7 +2,7 @@
   {
     "title": "Dental Blue Landing page",
     "description": "A fully responsive landing page for Dental Blue Clinic, built from design to code, focusing on layout systems and UI consistency.",
-    "video": "/videos/project1.mp4",
+    "video": "/videos/project1o.mp4",
     "images": ["astro-01.webp", "astro-02.jpeg"],
     "tech": ["Javascript", "Tailwind", "Vite", "Sanity"],
     "platforms": ["web"],
@@ -12,7 +12,7 @@
   {
     "title": "Dental Blue Agenda App",
     "description": "A web application designed to streamline dental appointment management with a modern, intuitive, and responsive user experience.",
-    "video": "/videos/project2.mp4",
+    "video": "/videos/project2o.mp4",
     "images": ["astro-02.jpeg", "#"],
     "tech": ["React", "Tailwind", "Vite", "Supabase"],
     "platforms": ["web"],

@@ -33,11 +33,11 @@ const isSlider = (validImages.length + publicImages.length) > 1;
         hasVideo ? (
           <video
             src={project.video}
-            autoplay
             muted
             loop
             playsinline
-            class="absolute inset-0 w-full h-full object-cover"
+            preload="metadata"
+            class="absolute inset-0 w-full h-full object-cover lazy-video"
           />
         ) : hasAnyImage ? (
           <>
@@ -126,6 +126,30 @@ const isSlider = (validImages.length + publicImages.length) > 1;
 
   initSliders();
   document.addEventListener('astro:after-swap', initSliders);
+
+  function initLazyVideos() {
+    const videos = document.querySelectorAll<HTMLVideoElement>('video.lazy-video');
+    if (!videos.length) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const video = entry.target as HTMLVideoElement;
+          if (entry.isIntersecting) {
+            video.play().catch(() => {});
+          } else {
+            video.pause();
+          }
+        });
+      },
+      { threshold: 0.25 }
+    );
+
+    videos.forEach((video) => observer.observe(video));
+  }
+
+  initLazyVideos();
+  document.addEventListener('astro:after-swap', initLazyVideos);
 </script>
 
 <style is:global>
